@@ -20,3 +20,40 @@ If You've gotten this far, you're on your own! Although we will give you some hi
     <div class="right-button"> > </div>
   </div>
 */
+class Carousel {
+  constructor(carousel) {
+    this.carousel = carousel;
+    console.log(this.carousel);
+
+    this.leftBtn = this.carousel.querySelector(".left-button");
+    console.log(this.leftBtn);
+
+    this.rightBtn = this.carousel.querySelector(".right-button");
+    console.log(this.rightBtn);
+
+    this.carouselImgs = this.carousel.querySelectorAll("img");
+    console.log(this.carouselImgs);
+
+    this.index = [];
+
+    this.carouselImgs.forEach((img, index) => this.index.push(index));
+    console.log(this.index);
+
+    this.currentImg = this.carouselImgs[0];
+
+    this.currentImg.style.display = "block";
+
+    this.rightBtn.addEventListener("click", () => nextImg());
+    this.leftBtn.addEventListener("click", () => previousImg());
+  }
+
+  nextImg() {
+    this.currentImg = this.currentImg.nextElementSibling;
+  }
+
+  previousImg() {}
+}
+
+let carousel = document
+  .querySelectorAll(".carousel")
+  .forEach((carousel) => new Carousel(carousel));
